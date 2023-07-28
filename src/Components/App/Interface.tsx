@@ -4,27 +4,27 @@ import IconeUsuario from '../Interface/IconeUsuario';
 import AppGestaoFinanceira from '../Interface/AppGestaoFinanceira';
 
 type Props = {
-  user: object
+  nome: string,
+  photo: string
 }
 
-const Interface: React.FC<Props> = ({ user }) => {
+const Interface: React.FC<Props> = ({ nome, photo }) => {
+
   return (
-    user
-    ? 
-      <div>
+    <div>
         <div className="App">
-         {/*  <IconeUsuario
-            nome={user ? user.displayName}
-            id={user?.uid}
-            imgPerfil={user?.photoURL}
+
+         <IconeUsuario
+            nome={nome}
+            photo={photo}
           />
-          <Modulos>
+            {/*  
+
+            <Modulos>
             <AppGestaoFinanceira />
           </Modulos> */}
         </div>
       </div>
-    : 
-      null
   );
 };
 

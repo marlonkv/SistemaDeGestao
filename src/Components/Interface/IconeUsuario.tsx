@@ -2,44 +2,36 @@ import React from 'react';
 import styled from 'styled-components';
 import { auth } from '../../firebase';
 import { signOut } from 'firebase/auth';
+import { setInterval } from 'timers/promises';
 
 type Props = {
   nome: string,
-  id: number,
-  imgPerfil: string
+  photo: string
 }
 
-const IconeUsuario: React.FC<Props> = ({ nome, id, imgPerfil }) => {
-/*   const [config, setConfig] = React.useState(0);
+const IconeUsuario: React.FC<Props> = ({ nome, photo }) => {
+  const [altura, setAltura] = React.useState(0);
 
   const logout = async () => {
     await signOut(auth);
   };
 
-  function mouseBg({ currentTarget }) {
-    setConfig(73);
-  }
-  function mouseBgBg({ target }) {
-    console.log(target);
-    if (target.className.includes('bg')) {
-      setConfig(0);
-    }
-  } */
-
   return (
-/*     <Posicao className="bg" onMouseOver={mouseBgBg}>
-      <Base>
-        <Bg onMouseOver={mouseBg}>
+    <Posicao className="bg" >
+      <Base 
+        onMouseOver={() => setAltura(75)}
+        onMouseOut={() => setAltura(0)}
+      >
+        <Icone>
           <div>
-            <img src={imgPerfil} alt="perfil" />
+            <img src={photo} alt="perfil" />
           </div>
           <div>
             <h1>{nome}</h1>
-            <p>{id}</p> 
           </div>
-        </Bg>
+        </Icone>
 
-        <Config style={{ height: `${config}px` }}>
+        <Config style={{ height: `${altura}px` }}>
           <ul>
             <li>
               <button onClick={logout}>Personalizar Página</button>
@@ -48,8 +40,7 @@ const IconeUsuario: React.FC<Props> = ({ nome, id, imgPerfil }) => {
           </ul>
         </Config>
       </Base>
-    </Posicao> */
-    null
+    </Posicao> 
   );
 };
 
@@ -93,7 +84,7 @@ const Base = styled.div`
   display: grid;
   z-index: 1;
 `;
-const Bg = styled.div`
+const Icone = styled.div`
   display: grid;
   grid-template-columns: auto 1fr;
   place-content: center;
